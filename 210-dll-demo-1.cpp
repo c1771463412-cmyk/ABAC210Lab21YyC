@@ -1,9 +1,52 @@
 // COMSC-210-5293 | Lab 21 | Yuyi Chen
 
 #include <iostream>
+#include <string>
+#include <cstdlib>
+#include <ctime>
 using namespace std;
 
 const int MIN_NR = 10, MAX_NR = 99, MIN_LS = 5, MAX_LS = 20;
+const int GOAT_SIZE = 15;
+
+class Goat {
+    private:
+        int age;
+        string name;
+        string color;
+        string names[GOAT_SIZE];
+        string colors[GOAT_SIZE];
+    
+    public:
+        Goat() {
+            string goatNames[GOAT_SIZE] = {
+                "Billy", "Daisy", "Clover", "Luna", "Oreo",
+                "Peanut", "Maple", "Willow", "Hazel", "Coco",
+                "Mochi", "Biscuit", "Poppy", "Rosie", "Charlie"
+            };
+
+            string goatColors[GOAT_SIZE] = {
+                "White", "Black", "Brown", "Gray", "Cream",
+                "Tan", "Gold", "Red", "Yellow", "Chocolate",
+                "Caramel", "Beige", "Silver", "Spotted", "Mixed"
+            };
+
+            for (int i = 0; i < GOAT_SIZE; i++) {
+                names[i] = goatNames[i];
+                colors[i] = goatColors[i];
+            }
+
+            age = rand() % 20 + 1; // Random age between 1-20
+            name = names[rand() % GOAT_SIZE];
+            color = colors[rand() % GOAT_SIZE];
+        }
+    
+    Goat(int a, string n, string c) {
+        age = a;
+        name = n;
+        color = c;
+    }
+}
 
 class DoublyLinkedList {
 private:
