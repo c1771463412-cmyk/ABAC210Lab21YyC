@@ -144,12 +144,6 @@ int main() {
 
     DoublyLinkedList list;
 
-    // Test printing and empty list
-    cout << "Empty list test:" << endl;
-    list.print();
-    list.print_reverse();
-    cout << endl;
-
     int size = rand() % (MAX_LS - MIN_LS + 1) + MIN_LS;
 
     for (int i = 0; i < size; ++i) {
