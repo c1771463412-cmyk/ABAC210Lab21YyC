@@ -18,6 +18,9 @@ class Goat {
         string colors[GOAT_SIZE];
     
     public:
+        // Goat() randomly generates a goat's age, name, and color
+        // arguments: none
+        // returns: none
         Goat() {
             string goatNames[GOAT_SIZE] = {
                 "Billy", "Daisy", "Clover", "Luna", "Oreo",
@@ -31,6 +34,7 @@ class Goat {
                 "Caramel", "Beige", "Silver", "Spotted", "Mixed"
             };
 
+            // Copy the names and colors into the class arrays
             for (int i = 0; i < GOAT_SIZE; i++) {
                 names[i] = goatNames[i];
                 colors[i] = goatColors[i];
@@ -41,14 +45,28 @@ class Goat {
             color = colors[rand() % GOAT_SIZE];
         }
 
+        // Goat() creates a goat with the given information
+        // arguments: a - age, n - name, c - color
+        // returns: none
         Goat(int a, string n, string c) {
             age = a;
             name = n;
             color = c;
         }
 
+        // getAge() returns the goat's age
+        // arguments: none
+        // returns: the age of the goat
         int getAge()      { return age; }
+
+        // getName() returns the goat's name
+        // arguments: none
+        // returns: the name of the goat
         string getName()  { return name; }
+
+        // getColor() returns the goat's color
+        // arguments: none
+        // returns: the color of the goat
         string getColor() { return color; }
 };
 
@@ -59,6 +77,9 @@ private:
         Node* prev;
         Node* next;
 
+        // Node() creates a node and sets its pointers
+        // arguments: val - goat, p - previous node, n - next node
+        // returns: none
         Node(Goat val, Node* p = nullptr, Node* n = nullptr) {
             data = val; 
             prev = p;
@@ -70,9 +91,14 @@ private:
     Node* tail;
 
 public:
-    // constructor
+    // DoublyLinkedList() creates an empty linked list
+    // arguments: none
+    // returns: none
     DoublyLinkedList() { head = nullptr; tail = nullptr; }
 
+    // push_back() adds a goat to the end of the list
+    // arguments: value - goat to add
+    // returns: none
     void push_back(Goat value) {
         Node* newNode = new Node(value);
         if (!tail)  // if there's no tail, the list is empty
@@ -84,6 +110,9 @@ public:
         }
     }
 
+    // push_front() adds a goat to the beginning of the list
+    // arguments: value - goat to add
+    // returns: none
     void push_front(Goat value) {
         Node* newNode = new Node(value);
         if (!head)  // if there's no head, the list is empty
@@ -95,6 +124,9 @@ public:
         }
     }
 
+    // print() displays all goats from head to tail
+    // arguments: none
+    // returns: none
     void print() {
         if (!head) {
             cout << "List is empty" << endl;
@@ -103,6 +135,7 @@ public:
 
         Node* current = head;
 
+        // Move forward through the list
         while (current) {
             cout << "    " << current->data.getName()
                  << " (" << current->data.getColor()
@@ -112,6 +145,9 @@ public:
         }
     }
 
+    // print_reverse() displays all goats from tail to head
+    // arguments: none
+    // returns: none
     void print_reverse() {
         if (!tail) {
             cout << "List is empty" << endl;
@@ -120,6 +156,7 @@ public:
 
         Node* current = tail;
 
+        // Move backward through the list
         while (current) {
             cout << "    " << current->data.getName()
                  << " (" << current->data.getColor()
@@ -129,6 +166,9 @@ public:
         }
     }
 
+    // ~DoublyLinkedList() deletes all nodes to free memory
+    // arguments: none
+    // returns: none
     ~DoublyLinkedList() {
         while (head) {
             Node* temp = head;
@@ -144,8 +184,10 @@ int main() {
 
     DoublyLinkedList list;
 
+    // Generate a random number of goats between 5 and 20
     int size = rand() % (MAX_LS - MIN_LS + 1) + MIN_LS;
 
+    // Add randomly generated goats to the list
     for (int i = 0; i < size; ++i) {
         Goat goat;
         list.push_back(goat);
